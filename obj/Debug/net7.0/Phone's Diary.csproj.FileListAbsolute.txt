@@ -13,3 +13,18 @@
 /Users/4millsprog/Projects/Phone's Diary/Phone's Diary/obj/Debug/net7.0/Phone's Diary.pdb
 /Users/4millsprog/Projects/Phone's Diary/Phone's Diary/obj/Debug/net7.0/Phone's Diary.genruntimeconfig.cache
 /Users/4millsprog/Projects/Phone's Diary/Phone's Diary/obj/Debug/net7.0/ref/Phone's Diary.dll
+/Users/4millsprog/Documents/Projects/C#/Agenda/PhoneDiary/bin/Debug/net7.0/Phone's Diary
+/Users/4millsprog/Documents/Projects/C#/Agenda/PhoneDiary/bin/Debug/net7.0/Phone's Diary.deps.json
+/Users/4millsprog/Documents/Projects/C#/Agenda/PhoneDiary/bin/Debug/net7.0/Phone's Diary.runtimeconfig.json
+/Users/4millsprog/Documents/Projects/C#/Agenda/PhoneDiary/bin/Debug/net7.0/Phone's Diary.dll
+/Users/4millsprog/Documents/Projects/C#/Agenda/PhoneDiary/bin/Debug/net7.0/Phone's Diary.pdb
+/Users/4millsprog/Documents/Projects/C#/Agenda/PhoneDiary/obj/Debug/net7.0/Phone's Diary.csproj.AssemblyReference.cache
+/Users/4millsprog/Documents/Projects/C#/Agenda/PhoneDiary/obj/Debug/net7.0/Phone's Diary.GeneratedMSBuildEditorConfig.editorconfig
+/Users/4millsprog/Documents/Projects/C#/Agenda/PhoneDiary/obj/Debug/net7.0/Phone's Diary.AssemblyInfoInputs.cache
+/Users/4millsprog/Documents/Projects/C#/Agenda/PhoneDiary/obj/Debug/net7.0/Phone's Diary.AssemblyInfo.cs
+/Users/4millsprog/Documents/Projects/C#/Agenda/PhoneDiary/obj/Debug/net7.0/Phone's Diary.csproj.CoreCompileInputs.cache
+/Users/4millsprog/Documents/Projects/C#/Agenda/PhoneDiary/obj/Debug/net7.0/Phone's Diary.dll
+/Users/4millsprog/Documents/Projects/C#/Agenda/PhoneDiary/obj/Debug/net7.0/refint/Phone's Diary.dll
+/Users/4millsprog/Documents/Projects/C#/Agenda/PhoneDiary/obj/Debug/net7.0/Phone's Diary.pdb
+/Users/4millsprog/Documents/Projects/C#/Agenda/PhoneDiary/obj/Debug/net7.0/Phone's Diary.genruntimeconfig.cache
+/Users/4millsprog/Documents/Projects/C#/Agenda/PhoneDiary/obj/Debug/net7.0/ref/Phone's Diary.dll

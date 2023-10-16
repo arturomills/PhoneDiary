@@ -1,17 +1,6 @@
 ﻿using Phone_s_Diary;
 
 var Listcontact = new List<Contact>();
-var listaPrueba = new Contact
-
-{
-    Id = 1,
-    Name = "Jhon",
-    LastName = "Doe",
-    Phone = "800-220-0000"
-
-};
-
-Listcontact.Add(listaPrueba);
 
 while (true)
 {
@@ -36,17 +25,40 @@ while (true)
 
         case "1":
 
-            var NewList = new Contact
-            {
-                Id = Listcontact.Count() + 1,
-                Name = Console.ReadLine(),
-                LastName = Console.ReadLine(),
-                Phone = Console.ReadLine(),
-            };
+            var newContact = new Contact();
 
-            Listcontact.Add(NewList);
+            for (int i = 0; i < 4; i++)
+            {
+                switch (i)
+                {
+                    case 0:
+                        System.Console.WriteLine("Insert Contact Name");
+                        newContact.Name = Console.ReadLine();
+                        break;
+
+                    case 1:
+                        System.Console.WriteLine("Insert Contact Last Name");
+                        newContact.LastName = Console.ReadLine();
+                        break;
+
+                    case 2:
+                        System.Console.WriteLine("Insert Contact Phone Number");
+                        newContact.Phone = Console.ReadLine();
+                        break;
+
+                    case 3:
+                        newContact.Id = 1;
+                        break;
+                    default:
+                        System.Console.WriteLine("Invalid Option");
+                        break;
+                }
+
+            }
+
+            Listcontact.Add(newContact);
             System.Console.WriteLine("Contact Saved!\n");
-            System.Console.WriteLine(NewList.Name + " " + NewList.LastName + " - " + NewList.Phone);
+            System.Console.WriteLine(newContact.Name + " " + newContact.LastName + " - " + newContact.Phone);
 
             break;
 
@@ -82,6 +94,7 @@ while (true)
         case "5":
             var EraseName = Console.ReadLine();
             var EraseFind = Listcontact.Find(x => x.Name.ToLower() == EraseName.ToLower());
+            Listcontact.Remove(EraseFind);
             System.Console.WriteLine("Erased Contact!");
             System.Console.WriteLine(EraseFind.Id + " " + EraseFind.Name + " " + EraseFind.LastName + " " + EraseFind.Phone);
             break;
