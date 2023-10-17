@@ -32,25 +32,33 @@ while (true)
                 switch (i)
                 {
                     case 0:
-                        System.Console.WriteLine("Insert Contact Name");
+                        System.Console.WriteLine("Insert Contact Name:");
                         newContact.Name = Console.ReadLine();
                         break;
 
                     case 1:
-                        System.Console.WriteLine("Insert Contact Last Name");
+                        System.Console.WriteLine("Insert Contact Last Name:");
                         newContact.LastName = Console.ReadLine();
                         break;
 
                     case 2:
-                        System.Console.WriteLine("Insert Contact Phone Number");
+                        System.Console.WriteLine("Insert Contact Phone Number:");
                         newContact.Phone = Console.ReadLine();
                         break;
 
                     case 3:
-                        newContact.Id = 1;
+                        if (Listcontact.Count > 0)
+                        {
+                        newContact.Id = Listcontact.Max(x => x.Id) + 1;
+                        }
+                        
+                        else
+                        {
+                            newContact.Id = 1;
+                        }
                         break;
                     default:
-                        System.Console.WriteLine("Invalid Option");
+                        System.Console.WriteLine("Invalid Option:");
                         break;
                 }
 
@@ -97,6 +105,19 @@ while (true)
             Listcontact.Remove(EraseFind);
             System.Console.WriteLine("Erased Contact!");
             System.Console.WriteLine(EraseFind.Id + " " + EraseFind.Name + " " + EraseFind.LastName + " " + EraseFind.Phone);
+            foreach (var item in Listcontact)
+            {
+                if (item.Id > EraseFind.Id)
+                {
+                    item.Id -= 1;
+                }
+
+                else
+                {
+                    item.Id = item.Id;
+                }
+                
+            }
             break;
 
         case "6":
