@@ -112,7 +112,7 @@ internal class Program
                         break;
                     }
                     else
-                    {   
+                    {
                         System.Console.WriteLine("List Of Contacts\n");
                         viewr(Listcontact);
                         System.Console.WriteLine("Select an ID Contact to Update");
@@ -126,9 +126,9 @@ internal class Program
                         System.Console.WriteLine(" 3 - Update Phone Number");
                         var UpdateOption = Console.ReadLine();
 
-                        
-                            
-                        
+
+
+
                         if (UpdateOption == "1")
                         {
                             System.Console.WriteLine("Enter New Name to Update");
@@ -141,18 +141,18 @@ internal class Program
                             var newLastName = Console.ReadLine();
                             FindUpdate.LastName = newLastName;
                         }
-                       if (UpdateOption == "3")
-                       {
+                        if (UpdateOption == "3")
+                        {
                             System.Console.WriteLine("Enter New Phone Number to Update");
                             var newPhone = Console.ReadLine();
-                            FindUpdate.Phone = newPhone;    
-                       }
+                            FindUpdate.Phone = newPhone;
+                        }
 
                         else
-                       {
-                        System.Console.WriteLine("Select a Valid Option");
-                       }
-                       System.Console.WriteLine("Updated Contact !");
+                        {
+                            System.Console.WriteLine("Select a Valid Option");
+                        }
+                        System.Console.WriteLine("Updated Contact !");
                         Console.WriteLine(FindUpdate.Id + " " + FindUpdate.Name + " " + FindUpdate.LastName + " " + FindUpdate.Phone);
                     }
                     break;
@@ -160,24 +160,41 @@ internal class Program
 
 
                 case "5":
-                    var EraseName = Console.ReadLine();
-                    var EraseFind = Listcontact.Find(x => x.Name.ToLower() == EraseName.ToLower());
-                    Listcontact.Remove(EraseFind);
-                    Console.WriteLine("Erased Contact!");
-                    Console.WriteLine(EraseFind.Id + " " + EraseFind.Name + " " + EraseFind.LastName + " " + EraseFind.Phone);
-                    foreach (var item in Listcontact)
+
+                    if (Listcontact.Count <= 0)
                     {
-                        if (item.Id > EraseFind.Id)
-                        {
-                            item.Id -= 1;
-                        }
-
-                        else
-                        {
-                            item.Id = item.Id;
-                        }
-
+                        System.Console.WriteLine("No Contact Saved!");
+                        break;
                     }
+                    else
+                    {
+                        System.Console.WriteLine("List Of Contacts\n");
+                        viewr(Listcontact);
+                        System.Console.WriteLine("Select an ID Contact to Erase");
+                        //var idSelectErase = Console.ReadLine();
+                        var EraseId = Console.ReadLine();
+                        var EraseIdConvert = Convert.ToInt32(EraseId);
+                        var EraseFind = Listcontact.Find(x => x.Id == EraseIdConvert);
+                        Console.WriteLine(EraseFind.Id + " " + EraseFind.Name + " " + EraseFind.LastName + " " + EraseFind.Phone);
+                        Listcontact.Remove(EraseFind);
+                        Console.WriteLine("Erased Contact!");
+                        foreach (var item in Listcontact)
+                        {
+                            if (item.Id > EraseFind.Id)
+                            {
+                                item.Id -= 1;
+                            }
+
+                            else
+                            {
+                                item.Id = item.Id;
+                            }
+
+                        }
+                    }
+
+
+
                     break;
 
                 case "6":
