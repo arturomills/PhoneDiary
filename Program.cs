@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System.Collections;
+using System.Data;
 using System.Runtime.CompilerServices;
 using System.Text;
 using Microsoft.VisualBasic;
@@ -84,22 +85,78 @@ internal class Program
 
                 case "3":
 
-                    var LookName = Console.ReadLine();
+                    if (Listcontact.Count <= 0)
+                    {
+                        System.Console.WriteLine("No Contact Saved!");
+                        break;
+                    }
+                    else
+                    {
+                        viewr(Listcontact);
+                        var LookName = Console.ReadLine();
+                        var LookNameCovert = Convert.ToInt32(LookName);
+                        System.Console.WriteLine("Inser Id to Select");
+                        var FindName = Listcontact.Find(x => x.Id == LookNameCovert);
+                        Console.WriteLine(FindName.Id + " " + FindName.Name + " " + FindName.LastName + " " + FindName.Phone);
+                        break;
+                    }
 
-                    var FindName = Listcontact.Find(x => x.Name.ToLower() == LookName.ToLower());
 
-                    Console.WriteLine(FindName.Id + " " + FindName.Name + " " + FindName.LastName + " " + FindName.Phone);
-                    break;
+
 
                 case "4":
-                    var UpdateNumber = Console.ReadLine();
-                    var FindUpdate = Listcontact.Find(x => x.Name.ToLower() == UpdateNumber.ToLower());
-                    Console.WriteLine("New Nomber to Save");
-                    var NewNumber = Console.ReadLine();
-                    FindUpdate.Phone = NewNumber;
-                    Console.WriteLine("New Nomber Saved Correctly");
-                    Console.WriteLine(FindUpdate.Id + " " + FindUpdate.Name + " " + FindUpdate.LastName + " " + FindUpdate.Phone);
+
+                    if (Listcontact.Count <= 0)
+                    {
+                        System.Console.WriteLine("No Contact Saved!");
+                        break;
+                    }
+                    else
+                    {   
+                        System.Console.WriteLine("List Of Contacts\n");
+                        viewr(Listcontact);
+                        System.Console.WriteLine("Select an ID Contact to Update");
+                        var idSelect = Console.ReadLine();
+                        var idSelectConvert = Convert.ToInt32(idSelect);
+                        var FindUpdate = Listcontact.Find(x => x.Id == idSelectConvert);
+                        Console.WriteLine(FindUpdate.Id + " " + FindUpdate.Name + " " + FindUpdate.LastName + " " + FindUpdate.Phone);
+                        System.Console.WriteLine("Select a Field to Update\n");
+                        System.Console.WriteLine(" 1 - Update Name");
+                        System.Console.WriteLine(" 2 - Update Last Name");
+                        System.Console.WriteLine(" 3 - Update Phone Number");
+                        var UpdateOption = Console.ReadLine();
+
+                        
+                            
+                        
+                        if (UpdateOption == "1")
+                        {
+                            System.Console.WriteLine("Enter New Name to Update");
+                            var newName = Console.ReadLine();
+                            FindUpdate.Name = newName;
+                        }
+                        if (UpdateOption == "2")
+                        {
+                            System.Console.WriteLine("Enter New Last Name to Update");
+                            var newLastName = Console.ReadLine();
+                            FindUpdate.LastName = newLastName;
+                        }
+                       if (UpdateOption == "3")
+                       {
+                            System.Console.WriteLine("Enter New Phone Number to Update");
+                            var newPhone = Console.ReadLine();
+                            FindUpdate.Phone = newPhone;    
+                       }
+
+                        else
+                       {
+                        System.Console.WriteLine("Select a Valid Option");
+                       }
+                       System.Console.WriteLine("Updated Contact !");
+                        Console.WriteLine(FindUpdate.Id + " " + FindUpdate.Name + " " + FindUpdate.LastName + " " + FindUpdate.Phone);
+                    }
                     break;
+
 
 
                 case "5":
@@ -151,6 +208,7 @@ internal class Program
         if (listToFormat.Count <= 0)
         {
             System.Console.WriteLine("No Contacts Saved!!");
+
         }
 
         else

@@ -9,9 +9,8 @@ namespace Phone_s_Diary
 		public string Phone { get; set; }
 		
 	}
+	
 
-
-    
 	
 }
 
