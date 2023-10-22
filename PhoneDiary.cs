@@ -10,8 +10,6 @@ namespace Phone_s_Diary
 		
 	}
 	
-
-	
 }
 
 
