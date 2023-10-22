@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Data;
-using System.Runtime.CompilerServices;
-using System.Text;
-using Microsoft.VisualBasic;
+﻿using System.Text;
 using Phone_s_Diary;
 
 internal class Program
@@ -26,8 +22,6 @@ internal class Program
             Console.WriteLine("");
             Console.WriteLine("Enter Option");
             var Options = Console.ReadLine();
-
-
 
             switch (Options)
             {
@@ -80,7 +74,7 @@ internal class Program
                     break;
 
                 case "2":
-                    viewr(Listcontact);
+                    Viewr(Listcontact);
                     break;
 
                 case "3":
@@ -92,7 +86,7 @@ internal class Program
                     }
                     else
                     {
-                        viewr(Listcontact);
+                        Viewr(Listcontact);
                         var LookName = Console.ReadLine();
                         var LookNameCovert = Convert.ToInt32(LookName);
                         System.Console.WriteLine("Inser Id to Select");
@@ -100,8 +94,6 @@ internal class Program
                         Console.WriteLine(FindName.Id + " " + FindName.Name + " " + FindName.LastName + " " + FindName.Phone);
                         break;
                     }
-
-
 
 
                 case "4":
@@ -114,7 +106,7 @@ internal class Program
                     else
                     {
                         System.Console.WriteLine("List Of Contacts\n");
-                        viewr(Listcontact);
+                        Viewr(Listcontact);
                         System.Console.WriteLine("Select an ID Contact to Update");
                         var idSelect = Console.ReadLine();
                         var idSelectConvert = Convert.ToInt32(idSelect);
@@ -125,8 +117,6 @@ internal class Program
                         System.Console.WriteLine(" 2 - Update Last Name");
                         System.Console.WriteLine(" 3 - Update Phone Number");
                         var UpdateOption = Console.ReadLine();
-
-
 
 
                         if (UpdateOption == "1")
@@ -169,9 +159,8 @@ internal class Program
                     else
                     {
                         System.Console.WriteLine("List Of Contacts\n");
-                        viewr(Listcontact);
+                        Viewr(Listcontact);
                         System.Console.WriteLine("Select an ID Contact to Erase");
-                        //var idSelectErase = Console.ReadLine();
                         var EraseId = Console.ReadLine();
                         var EraseIdConvert = Convert.ToInt32(EraseId);
                         var EraseFind = Listcontact.Find(x => x.Id == EraseIdConvert);
@@ -193,8 +182,6 @@ internal class Program
                         }
                     }
 
-
-
                     break;
 
                 case "6":
@@ -209,18 +196,13 @@ internal class Program
                     }
                     break;
 
-
-
-
             }
-
 
         }
 
-
     }
 
-    private static void viewr(List<Contact> listToFormat)
+    private static void Viewr(List<Contact> listToFormat)
     {
         if (listToFormat.Count <= 0)
         {
