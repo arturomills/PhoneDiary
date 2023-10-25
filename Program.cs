@@ -3,6 +3,8 @@ using Phone_s_Diary;
 
 internal class Program
 {
+
+
     private static void Main(string[] args)
     {
         var Listcontact = new List<Contact>();
@@ -69,6 +71,7 @@ internal class Program
 
                     Listcontact.Add(newContact);
                     Console.WriteLine("Contact Saved!\n");
+                    //format string
                     Console.WriteLine(newContact.Name + " " + newContact.LastName + " - " + newContact.Phone);
 
                     break;
@@ -86,17 +89,34 @@ internal class Program
                     }
                     else
                     {
-                        Viewr(Listcontact);
-                        var LookName = Console.ReadLine();
-                        var LookNameCovert = Convert.ToInt32(LookName);
-                        System.Console.WriteLine("Inser Id to Select");
-                        var FindName = Listcontact.Find(x => x.Id == LookNameCovert);
+                        //camabiar nombre a id
+                        
+                        Console.WriteLine("Insert Id to Select");
+                        var findid = Console.ReadLine();
+                        var findIdCovert = Convert.ToInt32(findid);
+
+                        var result = Listcontact.Find(x => x.Id == findIdCovert);
+                        
+                        var FindName = Listcontact.Find(x => x.Id == findIdCovert);
                         Console.WriteLine(FindName.Id + " " + FindName.Name + " " + FindName.LastName + " " + FindName.Phone);
+                        
+                        foreach (var item in Listcontact)
+                        {
+                            if (item.Id == findIdCovert)
+                            {
+                                Viewr(Listcontact);
+                            }
+                            System.Console.WriteLine(item);
+                        }
+                        
+
                         break;
                     }
 
 
                 case "4":
+
+                    var repeat = true;
 
                     if (Listcontact.Count <= 0)
                     {
@@ -112,42 +132,51 @@ internal class Program
                         var idSelectConvert = Convert.ToInt32(idSelect);
                         var FindUpdate = Listcontact.Find(x => x.Id == idSelectConvert);
                         Console.WriteLine(FindUpdate.Id + " " + FindUpdate.Name + " " + FindUpdate.LastName + " " + FindUpdate.Phone);
-                        System.Console.WriteLine("Select a Field to Update\n");
-                        System.Console.WriteLine(" 1 - Update Name");
-                        System.Console.WriteLine(" 2 - Update Last Name");
-                        System.Console.WriteLine(" 3 - Update Phone Number");
-                        var UpdateOption = Console.ReadLine();
 
+                        while (repeat == true)
+                        {
 
-                        if (UpdateOption == "1")
-                        {
-                            System.Console.WriteLine("Enter New Name to Update");
-                            var newName = Console.ReadLine();
-                            FindUpdate.Name = newName;
-                        }
-                        if (UpdateOption == "2")
-                        {
-                            System.Console.WriteLine("Enter New Last Name to Update");
-                            var newLastName = Console.ReadLine();
-                            FindUpdate.LastName = newLastName;
-                        }
-                        if (UpdateOption == "3")
-                        {
-                            System.Console.WriteLine("Enter New Phone Number to Update");
-                            var newPhone = Console.ReadLine();
-                            FindUpdate.Phone = newPhone;
-                        }
+                            System.Console.WriteLine("Select a Field to Update\n");
+                            System.Console.WriteLine(" 1 - Update Name");
+                            System.Console.WriteLine(" 2 - Update Last Name");
+                            System.Console.WriteLine(" 3 - Update Phone Number");
+                            System.Console.WriteLine(" 4 - Exit!");
+                            var UpdateOption = Console.ReadLine();
 
-                        else
-                        {
-                            System.Console.WriteLine("Select a Valid Option");
+                            if (UpdateOption == "1")
+                            {
+                                System.Console.WriteLine("Enter New Name to Update");
+                                var newName = Console.ReadLine();
+                                FindUpdate.Name = newName;
+                            }
+                            if (UpdateOption == "2")
+                            {
+                                System.Console.WriteLine("Enter New Last Name to Update");
+                                var newLastName = Console.ReadLine();
+                                FindUpdate.LastName = newLastName;
+                            }
+                            if (UpdateOption == "3")
+                            {
+                                System.Console.WriteLine("Enter New Phone Number to Update");
+                                var newPhone = Console.ReadLine();
+                                FindUpdate.Phone = newPhone;
+                            }
+
+                            else if (UpdateOption == "4")
+                            {
+                                break;
+                            }
+
+                            else
+                            {
+                                System.Console.WriteLine("Select a Valid Option");
+                            }
+                            System.Console.WriteLine("Updated Contact !");
+                            Console.WriteLine(FindUpdate.Id + " " + FindUpdate.Name + " " + FindUpdate.LastName + " " + FindUpdate.Phone);
                         }
-                        System.Console.WriteLine("Updated Contact !");
-                        Console.WriteLine(FindUpdate.Id + " " + FindUpdate.Name + " " + FindUpdate.LastName + " " + FindUpdate.Phone);
                     }
+
                     break;
-
-
 
                 case "5":
 
@@ -167,19 +196,7 @@ internal class Program
                         Console.WriteLine(EraseFind.Id + " " + EraseFind.Name + " " + EraseFind.LastName + " " + EraseFind.Phone);
                         Listcontact.Remove(EraseFind);
                         Console.WriteLine("Erased Contact!");
-                        foreach (var item in Listcontact)
-                        {
-                            if (item.Id > EraseFind.Id)
-                            {
-                                item.Id -= 1;
-                            }
 
-                            else
-                            {
-                                item.Id = item.Id;
-                            }
-
-                        }
                     }
 
                     break;
@@ -204,6 +221,7 @@ internal class Program
 
     private static void Viewr(List<Contact> listToFormat)
     {
+               
         if (listToFormat.Count <= 0)
         {
             System.Console.WriteLine("No Contacts Saved!!");
@@ -215,18 +233,24 @@ internal class Program
             var sb = new StringBuilder();
             sb.AppendFormat("{0,-2} {1,-8:} {2,-10} {3,-16}", "Id", "Name", "Last Name", "Phone Number");
             sb.Append("\n");
+        
+            
             foreach (var item in listToFormat)
+
             {
+                
                 sb.Append(string.Format("{0,0}", item.Id));
-                sb.Append(string.Format("{0,8}", item.Name));
-                sb.Append(string.Format("{0,12}", item.LastName));
+                sb.Append(string.Format("{0,-8}", item.Name));
+                sb.Append(string.Format("{0,-12}", item.LastName));
                 sb.Append(string.Format("{0,14}", item.Phone));
                 sb.Append("\n");
             }
             Console.WriteLine(sb);
-
+           
         }
+        
     }
-
 }
+
+
 
