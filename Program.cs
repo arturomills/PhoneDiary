@@ -77,7 +77,7 @@ internal class Program
                     break;
 
                 case "2":
-                    Viewr(Listcontact);
+                    Viewr(Listcontact,0);
                     break;
 
                 case "3":
@@ -89,27 +89,16 @@ internal class Program
                     }
                     else
                     {
-                        //camabiar nombre a id
-                        
+                        Viewr(Listcontact,0);
                         Console.WriteLine("Insert Id to Select");
                         var findid = Console.ReadLine();
                         var findIdCovert = Convert.ToInt32(findid);
-
+                        
                         var result = Listcontact.Find(x => x.Id == findIdCovert);
+                         
+                        Viewr(Listcontact, findIdCovert);
                         
-                        var FindName = Listcontact.Find(x => x.Id == findIdCovert);
-                        Console.WriteLine(FindName.Id + " " + FindName.Name + " " + FindName.LastName + " " + FindName.Phone);
                         
-                        foreach (var item in Listcontact)
-                        {
-                            if (item.Id == findIdCovert)
-                            {
-                                Viewr(Listcontact);
-                            }
-                            System.Console.WriteLine(item);
-                        }
-                        
-
                         break;
                     }
 
@@ -126,7 +115,7 @@ internal class Program
                     else
                     {
                         System.Console.WriteLine("List Of Contacts\n");
-                        Viewr(Listcontact);
+                        Viewr(Listcontact,0);
                         System.Console.WriteLine("Select an ID Contact to Update");
                         var idSelect = Console.ReadLine();
                         var idSelectConvert = Convert.ToInt32(idSelect);
@@ -188,7 +177,7 @@ internal class Program
                     else
                     {
                         System.Console.WriteLine("List Of Contacts\n");
-                        Viewr(Listcontact);
+                        Viewr(Listcontact,0);
                         System.Console.WriteLine("Select an ID Contact to Erase");
                         var EraseId = Console.ReadLine();
                         var EraseIdConvert = Convert.ToInt32(EraseId);
@@ -219,8 +208,11 @@ internal class Program
 
     }
 
-    private static void Viewr(List<Contact> listToFormat)
+    private static void Viewr(List<Contact> listToFormat, int idfind)
     {
+        var sb = new StringBuilder();
+        var sbl = new List<Contact>();
+        var findindex = listToFormat.Find(x => x.Id ==idfind);       
                
         if (listToFormat.Count <= 0)
         {
@@ -230,24 +222,31 @@ internal class Program
 
         else
         {
-            var sb = new StringBuilder();
+            
             sb.AppendFormat("{0,-2} {1,-8:} {2,-10} {3,-16}", "Id", "Name", "Last Name", "Phone Number");
             sb.Append("\n");
-        
-            
             foreach (var item in listToFormat)
 
             {
-                
                 sb.Append(string.Format("{0,0}", item.Id));
                 sb.Append(string.Format("{0,-8}", item.Name));
                 sb.Append(string.Format("{0,-12}", item.LastName));
                 sb.Append(string.Format("{0,14}", item.Phone));
                 sb.Append("\n");
+                
             }
-            Console.WriteLine(sb);
-           
+
+            if (idfind == 0)
+            {
+                Console.WriteLine(sb);
+            }
+            else
+            {
+                System.Console.WriteLine(sb);
+            }
+            
         }
+        
         
     }
 }
