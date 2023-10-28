@@ -1,10 +1,7 @@
 ﻿using System.Text;
 using Phone_s_Diary;
-
 internal class Program
 {
-
-
     private static void Main(string[] args)
     {
         var Listcontact = new List<Contact>();
@@ -27,7 +24,6 @@ internal class Program
 
             switch (Options)
             {
-
                 case "1":
 
                     var newContact = new Contact();
@@ -62,6 +58,7 @@ internal class Program
                                     newContact.Id = 1;
                                 }
                                 break;
+
                             default:
                                 Console.WriteLine("Invalid Option:");
                                 break;
@@ -71,13 +68,11 @@ internal class Program
 
                     Listcontact.Add(newContact);
                     Console.WriteLine("Contact Saved!\n");
-                    //format string
-                    Console.WriteLine(newContact.Name + " " + newContact.LastName + " - " + newContact.Phone);
-
+                    Viewr(Listcontact, newContact.Id);
                     break;
 
                 case "2":
-                    Viewr(Listcontact,0);
+                    Viewr(Listcontact, 0);
                     break;
 
                 case "3":
@@ -87,21 +82,17 @@ internal class Program
                         System.Console.WriteLine("No Contact Saved!");
                         break;
                     }
+
                     else
                     {
-                        Viewr(Listcontact,0);
+                        Viewr(Listcontact, 0);
                         Console.WriteLine("Insert Id to Select");
                         var findid = Console.ReadLine();
                         var findIdCovert = Convert.ToInt32(findid);
-                        
                         var result = Listcontact.Find(x => x.Id == findIdCovert);
-                         
                         Viewr(Listcontact, findIdCovert);
-                        
-                        
                         break;
                     }
-
 
                 case "4":
 
@@ -112,17 +103,19 @@ internal class Program
                         System.Console.WriteLine("No Contact Saved!");
                         break;
                     }
+
                     else
                     {
                         System.Console.WriteLine("List Of Contacts\n");
-                        Viewr(Listcontact,0);
+                        Viewr(Listcontact, 0);
                         System.Console.WriteLine("Select an ID Contact to Update");
                         var idSelect = Console.ReadLine();
                         var idSelectConvert = Convert.ToInt32(idSelect);
                         var FindUpdate = Listcontact.Find(x => x.Id == idSelectConvert);
-                        Console.WriteLine(FindUpdate.Id + " " + FindUpdate.Name + " " + FindUpdate.LastName + " " + FindUpdate.Phone);
+                        Viewr(Listcontact, FindUpdate.Id);
 
                         while (repeat == true)
+
                         {
 
                             System.Console.WriteLine("Select a Field to Update\n");
@@ -138,12 +131,14 @@ internal class Program
                                 var newName = Console.ReadLine();
                                 FindUpdate.Name = newName;
                             }
+
                             if (UpdateOption == "2")
                             {
                                 System.Console.WriteLine("Enter New Last Name to Update");
                                 var newLastName = Console.ReadLine();
                                 FindUpdate.LastName = newLastName;
                             }
+
                             if (UpdateOption == "3")
                             {
                                 System.Console.WriteLine("Enter New Phone Number to Update");
@@ -160,6 +155,7 @@ internal class Program
                             {
                                 System.Console.WriteLine("Select a Valid Option");
                             }
+
                             System.Console.WriteLine("Updated Contact !");
                             Console.WriteLine(FindUpdate.Id + " " + FindUpdate.Name + " " + FindUpdate.LastName + " " + FindUpdate.Phone);
                         }
@@ -174,26 +170,25 @@ internal class Program
                         System.Console.WriteLine("No Contact Saved!");
                         break;
                     }
+
                     else
                     {
                         System.Console.WriteLine("List Of Contacts\n");
-                        Viewr(Listcontact,0);
+                        Viewr(Listcontact, 0);
                         System.Console.WriteLine("Select an ID Contact to Erase");
                         var EraseId = Console.ReadLine();
                         var EraseIdConvert = Convert.ToInt32(EraseId);
                         var EraseFind = Listcontact.Find(x => x.Id == EraseIdConvert);
-                        Console.WriteLine(EraseFind.Id + " " + EraseFind.Name + " " + EraseFind.LastName + " " + EraseFind.Phone);
+                        Viewr(Listcontact, EraseFind.Id);
                         Listcontact.Remove(EraseFind);
                         Console.WriteLine("Erased Contact!");
 
                     }
-
                     break;
 
                 case "6":
                     Console.WriteLine("Thanks For Using This Dairy, Good Bye!!");
                     return;
-
 
                 default:
                     {
@@ -211,29 +206,31 @@ internal class Program
     private static void Viewr(List<Contact> listToFormat, int idfind)
     {
         var sb = new StringBuilder();
-        var sbl = new List<Contact>();
-        var findindex = listToFormat.Find(x => x.Id ==idfind);       
-               
+        var sbl = new StringBuilder();
+        
         if (listToFormat.Count <= 0)
         {
             System.Console.WriteLine("No Contacts Saved!!");
-
         }
 
         else
         {
-            
-            sb.AppendFormat("{0,-2} {1,-8:} {2,-10} {3,-16}", "Id", "Name", "Last Name", "Phone Number");
+
+            sb.Append(string.Format("{0,-5}", "Id"));
+            sb.Append(string.Format("{0,-10}", "Name"));
+            sb.Append(string.Format("{0,-14}", "Last Name"));
+            sb.Append(string.Format("{0,-14}", "Phone Number"));
             sb.Append("\n");
+
             foreach (var item in listToFormat)
 
             {
-                sb.Append(string.Format("{0,0}", item.Id));
-                sb.Append(string.Format("{0,-8}", item.Name));
-                sb.Append(string.Format("{0,-12}", item.LastName));
-                sb.Append(string.Format("{0,14}", item.Phone));
+                sb.Append(string.Format("{0,-5}", item.Id));
+                sb.Append(string.Format("{0,-10}", item.Name));
+                sb.Append(string.Format("{0,-14}", item.LastName));
+                sb.Append(string.Format("{0,-14}", item.Phone));
                 sb.Append("\n");
-                
+
             }
 
             if (idfind == 0)
@@ -242,12 +239,29 @@ internal class Program
             }
             else
             {
-                System.Console.WriteLine(sb);
+                sbl.Append(string.Format("{0,-5}", "Id"));
+                sbl.Append(string.Format("{0,-10}", "Name"));
+                sbl.Append(string.Format("{0,-14}", "Last Name"));
+                sbl.Append(string.Format("{0,-14}", "Phone Number"));
+                sbl.Append("\n");
+
+                foreach (var item in listToFormat)
+                {
+                    if (item.Id == idfind)
+                    {
+                        sbl.Append(string.Format("{0,-5}", item.Id));
+                        sbl.Append(string.Format("{0,-10}", item.Name));
+                        sbl.Append(string.Format("{0,-14}", item.LastName));
+                        sbl.Append(string.Format("{0,-14}", item.Phone));
+                        sbl.Append("\n");
+                        System.Console.WriteLine(sbl);
+                    }
+                }
             }
-            
+
         }
-        
-        
+
+
     }
 }
 
