@@ -9,7 +9,7 @@ internal class Program
         while (true)
         {
             Console.WriteLine("\n");
-            Console.WriteLine("Welcome to SofwarTronicos Phone Diary\n");
+            Console.WriteLine("Welcome to SofwarTronicos Phone Directory\n");
             Console.WriteLine("Select an Option");
             Console.WriteLine("-----------------------------\n");
             Console.WriteLine("1 - Add Contact");
@@ -19,7 +19,7 @@ internal class Program
             Console.WriteLine("5 - Erase Contact");
             Console.WriteLine("6 - Exit");
             Console.WriteLine("");
-            Console.WriteLine("Enter Option");
+            Console.WriteLine("Enter an Option");
             var Options = Console.ReadLine();
 
             switch (Options)
@@ -60,14 +60,14 @@ internal class Program
                                 break;
 
                             default:
-                                Console.WriteLine("Invalid Option:");
+                                Console.WriteLine("Invalid Option, Please Select the Correct One:");
                                 break;
                         }
 
                     }
 
                     Listcontact.Add(newContact);
-                    Console.WriteLine("Contact Saved!\n");
+                    Console.WriteLine("Contact Saved Successfully!\n");
                     Viewr(Listcontact, newContact.Id);
                     break;
 
@@ -108,7 +108,7 @@ internal class Program
                     {
                         System.Console.WriteLine("List Of Contacts\n");
                         Viewr(Listcontact, 0);
-                        System.Console.WriteLine("Select an ID Contact to Update");
+                        System.Console.WriteLine("Select an ID Contact to Update Information");
                         var idSelect = Console.ReadLine();
                         var idSelectConvert = Convert.ToInt32(idSelect);
                         var FindUpdate = Listcontact.Find(x => x.Id == idSelectConvert);
@@ -118,7 +118,7 @@ internal class Program
 
                         {
 
-                            System.Console.WriteLine("Select a Field to Update\n");
+                            System.Console.WriteLine("Select Field to Update\n");
                             System.Console.WriteLine(" 1 - Update Name");
                             System.Console.WriteLine(" 2 - Update Last Name");
                             System.Console.WriteLine(" 3 - Update Phone Number");
@@ -181,13 +181,13 @@ internal class Program
                         var EraseFind = Listcontact.Find(x => x.Id == EraseIdConvert);
                         Viewr(Listcontact, EraseFind.Id);
                         Listcontact.Remove(EraseFind);
-                        Console.WriteLine("Erased Contact!");
+                        Console.WriteLine("Contact Successfully Deleted!");
 
                     }
                     break;
 
                 case "6":
-                    Console.WriteLine("Thanks For Using This Dairy, Good Bye!!");
+                    Console.WriteLine("Thanks For Using This Directory, Good Bye!!");
                     return;
 
                 default:
