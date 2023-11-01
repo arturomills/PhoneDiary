@@ -72,7 +72,7 @@ internal class Program
                     break;
 
                 case "2":
-                    Viewr(Listcontact, 0);
+                    Viewr(Listcontact);
                     break;
 
                 case "3":
@@ -85,7 +85,7 @@ internal class Program
 
                     else
                     {
-                        Viewr(Listcontact, 0);
+                        Viewr(Listcontact);
                         Console.WriteLine("Insert Id to Select");
                         var findid = Console.ReadLine();
                         var findIdCovert = Convert.ToInt32(findid);
@@ -107,7 +107,7 @@ internal class Program
                     else
                     {
                         System.Console.WriteLine("List Of Contacts\n");
-                        Viewr(Listcontact, 0);
+                        Viewr(Listcontact);
                         System.Console.WriteLine("Select an ID Contact to Update Information");
                         var idSelect = Console.ReadLine();
                         var idSelectConvert = Convert.ToInt32(idSelect);
@@ -174,7 +174,7 @@ internal class Program
                     else
                     {
                         System.Console.WriteLine("List Of Contacts\n");
-                        Viewr(Listcontact, 0);
+                        Viewr(Listcontact);
                         System.Console.WriteLine("Select an ID Contact to Erase");
                         var EraseId = Console.ReadLine();
                         var EraseIdConvert = Convert.ToInt32(EraseId);
@@ -191,23 +191,18 @@ internal class Program
                     return;
 
                 default:
-                    {
-
-                        Console.WriteLine("Enter a Valid Option!");
-                    }
+                    Console.WriteLine("Enter a Valid Option!");
                     break;
 
             }
-
         }
-
     }
 
-    private static void Viewr(List<Contact> listToFormat, int idfind)
+    private static void Viewr(List<Contact> listToFormat, int idfind = 0)
     {
         var sb = new StringBuilder();
         var sbl = new StringBuilder();
-        
+
         if (listToFormat.Count <= 0)
         {
             System.Console.WriteLine("No Contacts Saved!!");
@@ -258,12 +253,6 @@ internal class Program
                     }
                 }
             }
-
         }
-
-
     }
 }
-
-
-
